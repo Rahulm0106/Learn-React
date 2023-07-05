@@ -35,29 +35,47 @@
 // 3. Hooks cannot be nested in anything neither if statement nor function.
 
 //useState tutorial - https://youtu.be/O6P86uwfdR0?list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h
-import React, { Component, useState } from "react";
+// import React, { Component, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(() => {
-    console.log("run function");
-    return 0;
-  }); //usestate always returns an array with two values
+// function App() {
+//   const [count, setCount] = useState(() => {
+//     console.log("run function");
+//     return 0;
+//   }); //usestate always returns an array with two values
 
-  function decrementCount() {
-    setCount((prevCount) => prevCount - 1);
-  }
+//   function decrementCount() {
+//     setCount((prevCount) => prevCount - 1);
+//   }
 
-  function incrementCount() {
-    setCount((prevCount) => prevCount + 1);
-  }
+//   function incrementCount() {
+//     setCount((prevCount) => prevCount + 1);
+//   }
+
+//   return (
+//     <div>
+//       <button onClick={decrementCount}>-</button>
+//       <span>{count}</span>
+//       <button onClick={incrementCount}>+</button>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//useEffect tutorial - https://youtu.be/0ZJgIjIuY7U?list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h
+import React, { useState } from "react";
+
+export default function App() {
+  const [resourceType, setResourceType] = useState("posts");
 
   return (
-    <div>
-      <button onClick={decrementCount}>-</button>
-      <span>{count}</span>
-      <button onClick={incrementCount}>+</button>
-    </div>
+    <>
+      <div>
+        <button onClick={() => setResourceType("posts")}>Posts</button>
+        <button onClick={() => setResourceType("users")}>Users</button>
+        <button onClick={() => setResourceType("comments")}>Comments</button>
+      </div>
+      <h1>{[resourceType]}</h1>
+    </>
   );
 }
-
-export default App;
